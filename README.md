@@ -4,4 +4,4 @@ Application web de gestion de pâtisserie : coût de revient des recettes et des
 
 Tout tient dans `index.html`, sans serveur : les données sont enregistrées dans le navigateur et peuvent être synchronisées entre appareils via un Gist privé (Réglages → Synchronisation).
 
-Site : https://wilfried01-hub.github.io/appastry/
+Site : https://wilfried01-hub.github.io/Appastry/
