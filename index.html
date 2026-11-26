@@ -311,21 +311,105 @@ ol.steps li.done::before { content: "✓"; }
   .hide-sm { display: none; }
   .modal { margin: 0; }
 }
+/* ---------- Téléphone ---------- */
+.tb-badge, .tb-more, .tb-menu { display: none; }
+@media (max-width: 860px) {
+  html { -webkit-text-size-adjust: 100%; }
+  body { -webkit-tap-highlight-color: transparent; }
+  a, button, .chip, label, select { touch-action: manipulation; }
+  .wrap { gap: 16px; }
+  main { padding-block: calc(14px + env(safe-area-inset-top, 0px)) calc(150px + env(safe-area-inset-bottom, 0px)); }
+  .tagline { display: none; }
+  .head { align-items: flex-start; gap: 12px; }
+  .head > div:first-child { min-width: 0; flex: 1 1 100%; }
+  .head > .toolbar { width: 100%; gap: 8px; }
+  .head > .toolbar .btn { flex: 1 1 auto; }
+  .head > .toolbar .btn.primary { order: -1; flex-basis: 100%; }
+  /* Champs : 16 px pour éviter le zoom automatique de l'iPhone */
+  .input, select.input, textarea.input, .scaler input { font-size: 16px; }
+  .input, select.input { min-height: 44px; }
+  .btn { min-height: 44px; padding: 9px 14px; }
+  .btn.sm { min-height: 38px; }
+  .btn.icon { min-width: 44px; min-height: 44px; }
+  .scaler button { min-width: 40px; min-height: 40px; }
+  .chip { padding: 7px 14px; font-size: .9rem; }
+  .scroll-x { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 0 16px 2px; scrollbar-width: none; }
+  .scroll-x::-webkit-scrollbar { display: none; }
+  .scroll-x .chip { flex: none; }
+  .search { min-width: 0; flex: 1 1 100%; }
+  .toolbar > .btn { flex: 1 1 auto; }
+  .panel-h { padding: 12px 14px; flex-wrap: nowrap; }
+  .panel-h h2 { min-width: 0; font-size: 1.1rem; }
+  .panel-h > :last-child:not(:first-child) { margin-left: auto; flex: none; }
+  .panel-h:has(> .toolbar > *) { flex-wrap: wrap; }
+  .panel-h > .toolbar:has(> *) { flex-wrap: wrap; width: 100%; margin-left: 0; }
+  .panel-h > .toolbar .btn { flex: 1 1 auto; }
+  .panel-b { padding: 14px; }
+  .stats { gap: 8px; }
+  .stat { padding: 10px 12px; }
+  .stat b { font-size: 1.35rem; }
+  .cards { grid-template-columns: 1fr; gap: 10px; }
+  /* Bouton d'ajout flottant */
+  .fab { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(78px + env(safe-area-inset-bottom, 0px)); z-index: 45; border-radius: 99px; padding: 12px 18px; min-height: 50px; box-shadow: 0 6px 20px rgba(20,40,30,.28); }
+  /* Barre d'onglets */
+  .tabbar { grid-template-columns: repeat(6, 1fr); gap: 2px; padding-top: 6px; }
+  .tabbar a, .tb-more { position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: .66rem; color: var(--muted); text-decoration: none; padding: 6px 0 5px; border-radius: 10px; font-weight: 600; min-width: 0; min-height: 52px; justify-content: center; border: 0; background: transparent; cursor: pointer; }
+  .tabbar a span, .tb-more span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tabbar a[aria-current="page"], .tb-more[aria-current="page"] { color: var(--accent); background: var(--accent-soft); }
+  .tabbar svg { width: 22px; height: 22px; }
+  .tb-badge { display: block; position: absolute; top: 2px; left: calc(50% + 6px); background: var(--rasp); color: #fff; font-style: normal; font-size: .62rem; font-weight: 700; line-height: 16px; min-width: 16px; padding: 0 4px; border-radius: 99px; text-align: center; }
+  .tb-menu:not([hidden]) { display: flex; flex-direction: column; position: absolute; right: max(8px, env(safe-area-inset-right, 0px)); bottom: calc(100% + 8px); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 6px; min-width: 200px; }
+  .tb-menu a { flex-direction: row; justify-content: flex-start; gap: 12px; font-size: .95rem; padding: 10px 12px; min-height: 48px; color: var(--fg); }
+  .tb-menu a span { overflow: visible; }
+  /* Fenêtres : panneau plein écran avec boutons toujours visibles */
+  .overlay { padding: 0; align-items: flex-end; overflow: hidden; }
+  .modal { max-width: none; max-height: calc(100dvh - max(16px, env(safe-area-inset-top, 0px))); border-radius: 18px 18px 0 0; overflow: hidden; }
+  .modal > form { display: flex; flex-direction: column; min-height: 0; flex: 1 1 auto; }
+  .modal-h { padding: 14px 16px 8px; border-bottom: 1px solid var(--line); }
+  .modal-h h2 { font-size: 1.15rem; }
+  .modal-b { padding: 14px 16px 20px; overflow-y: auto; overscroll-behavior: contain; flex: 1 1 auto; min-height: 0; -webkit-overflow-scrolling: touch; }
+  .modal-f { margin-top: 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--surface); flex: none; }
+  .modal-f .btn.primary { flex: 1 1 auto; }
+  /* Liste des ingrédients en fiches */
+  .tbl-ing thead { display: none; }
+  .tbl-ing, .tbl-ing tbody { display: block; }
+  .tbl-ing tr.group-row { display: block; }
+  .tbl-ing tr.group-row td { display: block; }
+  .tbl-ing tr.click { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+  .tbl-ing tr.click td { padding: 0; border: 0; }
+  .tbl-ing tr.click td:nth-child(1) { grid-column: 1; grid-row: 1; }
+  .tbl-ing tr.click td:nth-child(3) { grid-column: 2; grid-row: 1; }
+  .tbl-ing tr.click td:nth-child(2) { grid-column: 1; grid-row: 2; text-align: left; color: var(--muted); font-size: .84rem; }
+  .tbl-ing tr.click td:nth-child(2) .sub { display: inline; margin-left: 4px; }
+  .tbl-ing tr.click td:nth-child(4) { grid-column: 2; grid-row: 2; font-size: .84rem; color: var(--muted); }
+  .tbl-ing tr.click td:nth-child(4)::before { content: "Stock "; }
+  .tbl-ing tr.click td:nth-child(4):has(> .hint) { display: none; }
+  .tbl-ing tr.click td:nth-child(3) .sub { display: inline; margin-left: 4px; }
+}
 @media (max-width: 520px) {
   .grid3 { grid-template-columns: 1fr 1fr; }
-  .row-line { grid-template-columns: minmax(0, 1fr) 80px 34px; }
-  .row-line .sel-cell { grid-column: 1; grid-row: 1 / span 2; align-self: start; }
-  .row-line .qty-cell { grid-column: 2; grid-row: 1; }
-  .row-line .unit-cell { grid-column: 2; grid-row: 2; }
-  .row-line .rm-cell { grid-column: 3; grid-row: 1; }
-  .add-line { grid-template-columns: 1fr 1fr; }
-  .add-line .btn { grid-column: span 2; }
+  .grid2 { gap: 10px; }
+  .row-line { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 44px; row-gap: 6px; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+  .row-line .sel-cell { grid-column: 1 / -1; grid-row: 1; }
+  .row-line .qty-cell { grid-column: 1; grid-row: 2; }
+  .row-line .unit-cell, .row-line .fixed-unit { grid-column: 2; grid-row: 2; }
+  .row-line .rm-cell { grid-column: 3; grid-row: 2; }
+  .row-line.cake { grid-template-columns: minmax(0, 1fr) 44px; }
+  .row-line.cake > select { grid-column: 1 / -1; }
+  .row-line.cake > label { grid-column: 1; }
+  .row-line.cake > button { grid-column: 2; }
+  .add-line { grid-template-columns: minmax(0, 1fr) auto; }
+  .add-line > select { grid-column: 1 / -1; }
+  .add-line .btn { grid-column: auto; }
+  .order-item { grid-template-columns: minmax(0, 1fr) auto; }
+  .order-item .scaler { grid-column: 1; justify-self: start; }
   td, th { padding: 9px 10px; }
-  .ocard { grid-template-columns: 56px minmax(0, 1fr); }
-  .ocard .money { grid-column: 2; align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+  .ocard { grid-template-columns: 56px minmax(0, 1fr); padding: 12px; gap: 12px; }
+  .ocard .money { grid-column: 2; align-items: center; flex-direction: row; flex-wrap: wrap; }
+  .doc { padding: 20px 16px; }
 }
 @media print {
-  .side, .tabbar, .toolbar, .scaler, .crumb, .no-print, #modal-root, .toast { display: none !important; }
+  .side, .tabbar, .toolbar, .scaler, .crumb, .no-print, #modal-root, .toast, .fab { display: none !important; }
   .doc { border: 0; padding: 0; max-width: none; }
   .labels { grid-template-columns: repeat(3, 1fr); gap: 4mm; }
   .wrap { max-width: none; }
@@ -361,6 +445,7 @@ ol.steps li.done::before { content: "✓"; }
 
 /* ---------- Icônes ---------- */
 const I = {
+  more: '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
   home: '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
   basket: '<path d="M5 10h14l-1.5 9a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1zM8 10l4-6 4 6M3 10h18"/>',
   book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5M8 7h7"/>',
@@ -770,13 +855,22 @@ const NAV = [
   ['accueil','Accueil','home'], ['ingredients','Ingrédients','basket'], ['recettes','Recettes','book'],
   ['gateaux','Gâteaux','cake'], ['commandes','Commandes','bag'], ['calcul','Calculateur','calc'], ['reglages','Réglages','gear']
 ];
-const SHORT = { 'Ingrédients':'Ingréd.', 'Calculateur':'Calcul', 'Commandes':'Cmdes' };
+const SHORT = { 'Calculateur':'Calcul' };
+document.addEventListener('click', e => { const m = document.getElementById('tb-menu'); if (m && !m.hidden && !e.target.closest('#tb-menu')) { m.hidden = true; const b = document.getElementById('tb-more'); if (b) b.setAttribute('aria-expanded','false'); } });
 function upcoming(){ return db.orders.filter(o => o.status !== 'done' && o.status !== 'cancel'); }
 function renderNav(active){
   const sec = active.startsWith('recette-') ? 'recettes' : (active.startsWith('gateau-') || active.startsWith('etiquette-')) ? 'gateaux' : active.startsWith('doc-') ? 'commandes' : active;
   const n = upcoming().length;
   document.getElementById('nav').innerHTML = NAV.map(([h,l,i]) => `<a href="#${h}" ${sec===h?'aria-current="page"':''}>${ic(i)}<span>${l}</span>${h==='commandes' && n ? `<span class="badge">${n}</span>` : ''}</a>`).join('');
-  document.getElementById('tabbar').innerHTML = NAV.map(([h,l,i]) => `<a href="#${h}" ${sec===h?'aria-current="page"':''}>${ic(i)}<span>${SHORT[l] || l}</span></a>`).join('');
+  const MAIN = ['accueil','ingredients','recettes','gateaux','commandes'];
+  const more = NAV.filter(([h]) => !MAIN.includes(h));
+  const moreOn = more.some(([h]) => h === sec);
+  document.getElementById('tabbar').innerHTML = NAV.filter(([h]) => MAIN.includes(h)).map(([h,l,i]) => `<a href="#${h}" ${sec===h?'aria-current="page"':''}>${ic(i)}<span>${SHORT[l] || l}</span>${h==='commandes' && n ? `<em class="tb-badge">${n}</em>` : ''}</a>`).join('')
+    + `<button type="button" class="tb-more" id="tb-more" aria-expanded="false" ${moreOn?'aria-current="page"':''}>${ic('more')}<span>Plus</span></button>
+    <div class="tb-menu" id="tb-menu" hidden>${more.map(([h,l,i]) => `<a href="#${h}" ${sec===h?'aria-current="page"':''}>${ic(i)}<span>${l}</span></a>`).join('')}</div>`;
+  const mb = document.getElementById('tb-more'), mm = document.getElementById('tb-menu');
+  mb.addEventListener('click', e => { e.stopPropagation(); const open = mm.hidden; mm.hidden = !open; mb.setAttribute('aria-expanded', String(open)); });
+  mm.addEventListener('click', () => { mm.hidden = true; });
 }
 const view = document.getElementById('view');
 const ui = { ingQ:'', ingCat:'', recQ:'', recCat:'', scale:{}, done:{}, ordFilter:'open', label:{} };
@@ -810,7 +904,7 @@ function vHome(){
   const low = db.ingredients.filter(isLow);
   const rises = db.ingredients.map(i => ({ i, ch: priceChange(i) })).filter(x => x.ch && x.ch > 0.005).sort((a,b) => b.ch - a.ch).slice(0, 4);
   view.innerHTML = `
-  <div class="head"><div><h1>Tableau de bord</h1><p>Tes coûts de revient et tes commandes en un coup d’œil</p></div>
+  <div class="head"><div><h1>Tableau de bord</h1><p class="tagline">Tes coûts de revient et tes commandes en un coup d’œil</p></div>
     <div class="toolbar"><button class="btn" data-act="new-order">${ic('bag')}Nouvelle commande</button><button class="btn primary" data-act="new-recipe">${ic('plus')}Nouvelle recette</button></div></div>
   <div class="stats">
     <a class="stat" href="#commandes"><span>Commandes en cours</span><b>${upcoming().length}</b></a>
@@ -856,14 +950,14 @@ function vIngredients(){
   const groups = {}; list.forEach(i => (groups[i.category] = groups[i.category] || []).push(i));
   view.innerHTML = `
   <div class="head"><div><h1>Ingrédients</h1><p>${plural(db.ingredients.length,'ingrédient')} · prix d’achat, prix au kilo et allergènes</p></div>
-    <button class="btn primary" data-act="new-ing">${ic('plus')}Nouvel ingrédient</button></div>
+    <button class="btn primary fab" data-act="new-ing">${ic('plus')}Nouvel ingrédient</button></div>
   <div class="toolbar">
     <div class="search">${ic('search')}<input class="input" id="ing-q" placeholder="Rechercher un ingrédient, un magasin…" value="${esc(ui.ingQ)}" autocomplete="off"></div>
     ${db.ingredients.some(i => i.offAuto) ? `<button class="btn" data-act="market-refresh">${ic('sync')}Actualiser les prix du marché</button>` : ''}
   </div>
-  <div class="chips"><button class="chip" data-ingcat="" aria-pressed="${!ui.ingCat}">Tous</button>${cats.map(c => `<button class="chip" data-ingcat="${esc(c)}" aria-pressed="${ui.ingCat===c}">${esc(c)}</button>`).join('')}</div>
+  <div class="chips scroll-x"><button class="chip" data-ingcat="" aria-pressed="${!ui.ingCat}">Tous</button>${cats.map(c => `<button class="chip" data-ingcat="${esc(c)}" aria-pressed="${ui.ingCat===c}">${esc(c)}</button>`).join('')}</div>
   <section class="panel">
-    ${list.length ? `<div class="tbl-wrap"><table><thead><tr><th>Ingrédient</th><th class="r">Achat</th><th class="r">Prix de référence</th><th class="r">Stock</th><th class="hide-sm">Magasin</th></tr></thead><tbody>
+    ${list.length ? `<div class="tbl-wrap"><table class="tbl-ing"><thead><tr><th>Ingrédient</th><th class="r">Achat</th><th class="r">Prix de référence</th><th class="r">Stock</th><th class="hide-sm">Magasin</th></tr></thead><tbody>
     ${Object.entries(groups).map(([g, items]) => `<tr class="group-row"><td colspan="5">${esc(g)}</td></tr>` + items.map(i => {
       const ch = priceChange(i);
       return `<tr class="click" data-edit-ing="${i.id}"><td><b>${esc(i.name)}</b>${!(+i.price>0) ? ' <span class="tag warn">sans prix</span>' : ''}${(i.allergens||[]).length ? `<span class="sub">${i.allergens.map(esc).join(' · ')}</span>` : ''}</td>
@@ -981,10 +1075,10 @@ function vRecipes(){
   const cats = [...new Set(db.recipes.map(r => r.category))].sort();
   const list = db.recipes.filter(r => (!ui.recCat || r.category === ui.recCat) && (!q || r.name.toLowerCase().includes(q))).sort((a,b) => a.name.localeCompare(b.name));
   view.innerHTML = `
-  <div class="head"><div><h1>Recettes de base</h1><p>Biscuits, crèmes, ganaches… les briques de tes gâteaux</p></div>
-    <button class="btn primary" data-act="new-recipe">${ic('plus')}Nouvelle recette</button></div>
+  <div class="head"><div><h1>Recettes de base</h1><p class="tagline">Biscuits, crèmes, ganaches… les briques de tes gâteaux</p></div>
+    <button class="btn primary fab" data-act="new-recipe">${ic('plus')}Nouvelle recette</button></div>
   <div class="toolbar"><div class="search">${ic('search')}<input class="input" id="rec-q" placeholder="Rechercher une recette…" value="${esc(ui.recQ)}" autocomplete="off"></div></div>
-  <div class="chips"><button class="chip" data-reccat="" aria-pressed="${!ui.recCat}">Toutes</button>${cats.map(c => `<button class="chip" data-reccat="${esc(c)}" aria-pressed="${ui.recCat===c}">${esc(c)}</button>`).join('')}</div>
+  <div class="chips scroll-x"><button class="chip" data-reccat="" aria-pressed="${!ui.recCat}">Toutes</button>${cats.map(c => `<button class="chip" data-reccat="${esc(c)}" aria-pressed="${ui.recCat===c}">${esc(c)}</button>`).join('')}</div>
   ${list.length ? `<div class="cards">${list.map(r => { const c = recipeCost(r); const al = recipeAllergens(r); const subs = (r.items||[]).filter(i => i.sub).length; return `
     <a class="card" href="#recette-${r.id}">
       <div><span class="tag">${esc(r.category)}</span></div>
@@ -1172,8 +1266,8 @@ function recipeForm(r, dup){
 /* ---------- Gâteaux ---------- */
 function vCakes(){
   view.innerHTML = `
-  <div class="head"><div><h1>Gâteaux</h1><p>Tes créations complètes, composées de recettes de base</p></div>
-    <button class="btn primary" data-act="new-cake">${ic('plus')}Nouveau gâteau</button></div>
+  <div class="head"><div><h1>Gâteaux</h1><p class="tagline">Tes créations complètes, composées de recettes de base</p></div>
+    <button class="btn primary fab" data-act="new-cake">${ic('plus')}Nouveau gâteau</button></div>
   ${db.cakes.length ? `<div class="cards">${db.cakes.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(c => { const m = cakeCost(c), t = labor(cakeTime(c)); const per = (m+t)/(c.servings||1); const sp = c.salePrice || suggested(per).ttc; return `
     <a class="card" href="#gateau-${c.id}">
       ${c.image ? `<div class="photo" style="background-image:url('${c.image}')"></div>` : ''}
@@ -1369,15 +1463,15 @@ function vOrders(){
   const monthCalc = monthOrders.map(o => { const c = computeOrder(o.items); return { price: orderPrice(o, c), cost: c.tot }; });
   const ca = monthCalc.reduce((s, x) => s + x.price, 0), cost = monthCalc.reduce((s, x) => s + x.cost, 0);
   view.innerHTML = `
-  <div class="head"><div><h1>Commandes</h1><p>Suivi des commandes clients : date de retrait, statut, acompte</p></div>
-    <button class="btn primary" data-act="new-order">${ic('plus')}Nouvelle commande</button></div>
+  <div class="head"><div><h1>Commandes</h1><p class="tagline">Suivi des commandes clients : date de retrait, statut, acompte</p></div>
+    <button class="btn primary fab" data-act="new-order">${ic('plus')}Nouvelle commande</button></div>
   <div class="stats">
     <div class="stat"><span>En cours</span><b>${upcoming().length}</b></div>
     <div class="stat"><span>Commandes ce mois-ci</span><b>${monthOrders.length}</b></div>
     <div class="stat"><span>Chiffre d’affaires TTC du mois</span><b>${E(ca)}</b></div>
     <div class="stat"><span>Marge HT du mois</span><b>${E(ttcToHt(ca) - cost)}</b></div>
   </div>
-  <div class="chips">${[['open','En cours'],['closed','Terminées'],['all','Toutes']].map(([k,l]) => `<button class="chip" data-ordf="${k}" aria-pressed="${f===k}">${l}</button>`).join('')}</div>
+  <div class="chips scroll-x">${[['open','En cours'],['closed','Terminées'],['all','Toutes']].map(([k,l]) => `<button class="chip" data-ordf="${k}" aria-pressed="${f===k}">${l}</button>`).join('')}</div>
   ${list.length ? `<div class="orders">${list.map(orderCard).join('')}</div>` : `<div class="panel empty"><b>${f === 'open' ? 'Aucune commande en cours' : 'Aucune commande'}</b>Crée une commande pour un client : choisis les gâteaux, la date de retrait et l’acompte versé.</div>`}`;
 }
 function orderForm(o, preset){
@@ -1480,7 +1574,7 @@ function vCalc(){
   const opts = `<optgroup label="Gâteaux">${db.cakes.map(c => `<option value="c:${c.id}">${esc(c.name)}</option>`).join('')}</optgroup><optgroup label="Recettes de base">${db.recipes.map(r => `<option value="r:${r.id}">${esc(r.name)}</option>`).join('')}</optgroup>`;
   const byStore = {}; agg.forEach(a => (byStore[a.store || 'Sans magasin'] = byStore[a.store || 'Sans magasin'] || []).push(a));
   view.innerHTML = `
-  <div class="head"><div><h1>Calculateur</h1><p>Quantités à préparer, liste de courses et coût de revient</p></div>
+  <div class="head"><div><h1>Calculateur</h1><p class="tagline">Quantités à préparer, liste de courses et coût de revient</p></div>
     <label class="scaler" title="Taux horaire de main d’œuvre"><span style="padding:0 0 0 12px">Taux horaire</span><input id="rate" class="num" type="number" min="0" step="0.5" value="${db.settings.hourlyRate}"><span>€/h</span></label></div>
   <div class="split">
     <section class="panel">
@@ -1488,7 +1582,7 @@ function vCalc(){
       <div class="panel-b">
         <div class="add-line">
           <select class="input" id="add-src" aria-label="Gâteau ou recette">${opts}</select>
-          <label class="scaler" style="width:100%"><input id="add-qty" class="num" type="number" min="1" placeholder="parts" aria-label="Parts" style="width:100%"><span>parts</span></label>
+          <label class="scaler" style="width:100%"><input id="add-qty" class="num" type="number" min="1" placeholder="8" aria-label="Parts" style="width:100%"><span>parts</span></label>
           <button class="btn primary" data-act="add-order">${ic('plus')}Ajouter</button>
         </div>
         ${items.length ? items.map(x => `
@@ -1595,7 +1689,7 @@ function vLabel(id){
 function vSettings(){
   const t = db.settings.theme;
   view.innerHTML = `
-  <div class="head"><div><h1>Réglages</h1><p>Entreprise, calcul des prix, synchronisation et sauvegarde</p></div></div>
+  <div class="head"><div><h1>Réglages</h1><p class="tagline">Entreprise, calcul des prix, synchronisation et sauvegarde</p></div></div>
   <section class="panel"><div class="panel-h"><h2>Mon entreprise</h2><span class="hint">Apparaît sur les devis, factures et étiquettes</span></div><div class="panel-b" style="display:flex;flex-direction:column;gap:12px">
     <div class="grid2"><label class="f">Nom commercial<input class="input" id="co-name" value="${esc(db.settings.company.name)}" placeholder="Ex : Les douceurs de Wilfried"></label><label class="f">SIRET<input class="input" id="co-siret" value="${esc(db.settings.company.siret)}"></label></div>
     <label class="f">Adresse<textarea class="input" id="co-address" rows="2">${esc(db.settings.company.address)}</textarea></label>
@@ -1625,7 +1719,7 @@ function vSettings(){
       <p class="hint" style="margin:0">Le jeton reste sur cet appareil et n’est jamais inclus dans tes sauvegardes.</p>`}
   </div></section>
   <section class="panel"><div class="panel-h"><h2>Apparence</h2></div><div class="panel-b">
-    <div class="chips">${[['auto','Comme l’appareil'],['light','Clair'],['dark','Sombre']].map(([k,l]) => `<button class="chip" data-theme-set="${k}" aria-pressed="${t===k}">${l}</button>`).join('')}</div>
+    <div class="chips scroll-x">${[['auto','Comme l’appareil'],['light','Clair'],['dark','Sombre']].map(([k,l]) => `<button class="chip" data-theme-set="${k}" aria-pressed="${t===k}">${l}</button>`).join('')}</div>
   </div></section>
   <section class="panel"><div class="panel-h"><h2>Sauvegarde manuelle</h2></div><div class="panel-b" style="display:flex;flex-direction:column;gap:12px">
     <p class="hint" style="margin:0">Copie une sauvegarde de toutes tes données, ou importe une sauvegarde (texte ou fichier .json).</p>
